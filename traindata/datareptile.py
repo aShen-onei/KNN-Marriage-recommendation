@@ -1,6 +1,8 @@
 # http://search.jiayuan.com/v2/search_v2.php?key=&sex=f&stc=23:1&sn=default&sv=1&f=select
 import requests
 import json
+import re
+import MySQLdb
 def fetchUrl(url):
     headers = {
         'user-agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
@@ -20,42 +22,82 @@ def fetchUrl(url):
     except:
         print("Unknown Error !")
 
-def parserhtml(html):
+def parserhtml(html,db):
     res = json.loads(html)
     femal = []
+    pat = re.compile('>(.*?)<')
+    ranTagNationality = ''
+    ranTaglistNationality = ''
+    Nationality = ''
+    cursor = db.cursor()
     for key in res['userInfo']:
         reslist = []
         uid = key['uid']
         nickname = key['nickname']
         sex = key['sex']
-        age = key['age ']
+        age = key['age']
         work_location = key['work_location']
         height = key['height']
         education = key['education']
         marriage = key['marriage']
         income = key['income']
-        shortnote = key['shortnote']
+        count = key['count']
+        ranTag = pat.findall(key['randTag'])
+        for temp in ranTag:
+            if '族' in str(temp):
+                ranTagNationality = temp
+        ranTaglist = pat.findall(key['randListTag'])
+        for temp2 in ranTaglist:
+            if '族' in str(temp2):
+                ranTaglistNationality = temp2
+        if ranTagNationality == '' and ranTaglistNationality == '':
+            Nationality = '汉族'
+        elif ranTaglistNationality == '':
+            Nationality = ranTagNationality
+        elif ranTagNationality == '':
+            Nationality = ranTaglistNationality
+        else:
+            Nationality = ranTaglistNationality
         image = key['image']
+        if image:
+            haveimage = 1
+        else:
+            haveimage = 0
+        shortnote = key['shortnote']
         matchCondition = key['matchCondition']
-
+        # sql = "INSERT INTO Finfo(uid,nickname,sex,age,edu,height,location,\
+        # marrige,national,matchCondition,havaimage,image,shortnote) \
+        # VALUE(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "%\
+        #       (uid,nickname,sex,age,education,height,work_location,marriage,Nationality,matchCondition,haveimage,image,shortnote)
+        # try:
+        #     cursor.execute(sql)
+        #     db.commit()
+        # except:
+        #     db.rollback()
         reslist.append(uid)
         reslist.append(nickname)
         reslist.append(sex)
-        reslist.append(work_location)
+        reslist.append(age)
         reslist.append(height)
+        reslist.append(work_location)
         reslist.append(education)
         reslist.append(marriage)
         reslist.append(income)
+        reslist.append(count)
+        reslist.append(Nationality)
         reslist.append(shortnote)
         reslist.append(image)
+        reslist.append(haveimage)
         reslist.append(matchCondition)
+
 
         print(reslist)
         femal.append(reslist)
-    print(femal)
 
 if __name__ == '__main__':
     url = 'http://search.jiayuan.com/v2/search_v2.php?key=&sex=f&stc=23:1&sn=default&sv=1&f=select'
+    db = MySQLdb.connect("localhost","root","LZ6=0*9RuWKd","graduateprojecttest",charset = 'utf8')
     html = fetchUrl(url)
-    print(html)
-    # parserhtml(html)
+    # print(html)
+    parserhtml(html, db)
+    db.close()
