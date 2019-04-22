@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="824930d6-5799-40a1-b84d-06156a2eef54" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/traindata/datareptile.py" beforeDir="false" afterPath="$PROJECT_DIR$/traindata/datareptile.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/traindata/datareptile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-891">
-              <caret column="89" selection-start-column="89" selection-end-column="89" />
+            <state relative-caret-position="736">
+              <caret line="128" column="22" lean-forward="true" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
               <folding>
                 <element signature="e#90#105#0" expanded="true" />
               </folding>
@@ -44,6 +43,7 @@
     <findStrings>
       <find>ranTagNationality</find>
       <find>Nationality</find>
+      <find>db.close()</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -150,12 +150,14 @@
       <workItem from="1555894518805" duration="5116000" />
       <workItem from="1555900513029" duration="4340000" />
       <workItem from="1555911281814" duration="8185000" />
-      <workItem from="1555929436631" duration="1807000" />
+      <workItem from="1555929436631" duration="2075000" />
+      <workItem from="1555932561833" duration="2115000" />
+      <workItem from="1555935154484" duration="14416000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22127000" />
+    <option name="totallyTimeSpent" value="38926000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -169,7 +171,7 @@
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1872" height="1096" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2637969" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26931566" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -184,7 +186,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32952183" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.32848233" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.32744282" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -196,13 +198,13 @@
     <option name="version" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/GraduateProject$datareptile.coverage" NAME="datareptile Coverage Results" MODIFIED="1555931087928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/traindata" />
+    <SUITE FILE_PATH="coverage/GraduateProject$datareptile.coverage" NAME="datareptile Coverage Results" MODIFIED="1555950219232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/traindata" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/traindata/datareptile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-891">
-          <caret column="89" selection-start-column="89" selection-end-column="89" />
+        <state relative-caret-position="736">
+          <caret line="128" column="22" lean-forward="true" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
           <folding>
             <element signature="e#90#105#0" expanded="true" />
           </folding>
