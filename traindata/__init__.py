@@ -70,7 +70,7 @@ if __name__ == '__main__':
                 "pri_uid": "0",
                 "jsversion": "v5"
             }
-            datareptile.main(url, headers, formdata, db)
+            # datareptile.main(url, headers, formdata, db)
             page1 = page1 + 1
             if page % 10 == 0:
                 time.sleep(3)
