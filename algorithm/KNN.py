@@ -50,17 +50,42 @@ def dataSetAnalyse(filename):
 def standardization(dataSet):
     minVals = dataSet.min(0)
     maxVals = dataSet.max(0)
-    averageVals = dataSet.mean(0)
+    averageVals = np.mean(dataSet, axis=0)
     ranges = maxVals - minVals
     stdDataSet = np.zeros(np.shape(dataSet))
     m = dataSet.shape[0]
     stdDataSet = dataSet - np.tile(averageVals, (m, 1))
     stdDataSet = stdDataSet/np.tile(ranges, (m, 1))
     return stdDataSet, averageVals, ranges
+
+"""
+数据的归一化处理，将数据归一化到[0,1]范围
+标准化数据
+数据已经更换为无符号整数类型
+首先是线性标准化算法
+方法:
+     autNorm_mat
+参数:
+     dataSet:数据集
+返回:
+     std_Dataset:标准化后的数据
+     averageVals:数据每列的平均值矩阵
+     ranges:数据每列的标准差矩阵
+"""
+def autNorm_mat(dataSet):
+    minVals = dataSet.min(0)
+    maxVals = dataSet.max(0)
+    ranges = maxVals-minVals
+    std_Dataset = np.zeros(np.shape(dataSet))
+    m = dataSet.shape[0]
+    std_Dataset = dataSet - np.tile(minVals, (m, 1))
+    std_Dataset = std_Dataset / np.tile(ranges, (m, 1))
+    return std_Dataset, minVals, ranges
 """
 kNN算法实现
 """
 def kNN(testArry, dataSet, lableVector, k):
+    arrayLable = []
     dataSetSize = dataSet.shape[0]
     # 算出欧式距离
     Mat = np.tile(testArry, (dataSetSize, 1)) - dataSet
@@ -71,5 +96,5 @@ def kNN(testArry, dataSet, lableVector, k):
     sortIndex = Mat_distance.argsort()
     for i in range(k):
         lable = lableVector[sortIndex[i]]
-        print(dataSet[sortIndex[i]])
-        print(lable)
+        arrayLable.append(lable)
+    return arrayLable

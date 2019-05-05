@@ -59,10 +59,10 @@ def marrige(marrige):
         m = 1
         return m
     elif(marrige == '离异'):
-        m = 0
+        m = 2
         return m
     elif(marrige == '丧偶'):
-        m = -1
+        m = 3
         return m
 
 def edu(education):
@@ -89,10 +89,10 @@ def edu(education):
         return e
 
 def salary(uid):
-    uidurl = 'http://www.jiayuan.com/%s?fxly=pmtq-ss-210&pv.mark=s_p_c|%s|205197176' % (uid, uid)
+    uidurl = 'http://www.jiayuan.com/%s?fxly=search_v2_index' % uid
     header = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-        'Cookie':'accessID=20190422214243813520; ip_loc=21; save_jy_login_name=13516502945; stadate1=204197176; myloc=44%7C4406; myage=21; mysex=m; myuid=204197176; myincome=30; upt=ESWqVcKkGvmV0xxJXvgGVspRiT0JdSRo9bFGVLsnYbvkBx2Mr6tczPld38b7pZUoNFoAAHYYBpaixqbrZkU8Wc8.; user_attr=000000; skhistory_m=a%3A1%3A%7Bi%3A1556092333%3Bs%3A6%3A%22%E7%9C%89%E5%B1%B1%22%3B%7D; PHPSESSID=23cc8fc1d9f2bd5212c69f1b05a27530; SESSION_HASH=9c64eef5469e641d0e01caa7c7d66b0944e28554; jy_refer=sp0.baidu.com; FROM_BD_WD=%25E4%25B8%2596%25E7%25BA%25AA%25E4%25BD%25B3%25E7%25BC%2598; FROM_ST_ID=1764229; FROM_ST=.jiayuan.com; user_access=1; COMMON_HASH=1b86e07a17d23836a9aff7c4e2d76b8d; sl_jumper=%26cou%3D17%26omsg%3D0%26dia%3D0%26lst%3D2019-04-24; last_login_time=1556154167; PROFILE=205197176%3AaShenone%3Am%3Aimages1.jyimg.com%2Fw4%2Fglobal%2Fi%3A0%3A%3A1%3Azwzp_m.jpg%3A1%3A1%3A50%3A10%3A3.0; main_search:205197176=%7C%7C%7C00; pop_avatar=1; RAW_HASH=8aGHZG5cAyMCZYvcvqvE9L76RCENW1WxzTx66iX-Vo35475Zlmv3XGMumgVkDggmj4euT3h8M18qtkYNX5wZmfi-UY-Yl81lJKvziUcl91Fpn8g.; pop_time=1556155290740'
+        'Cookie':'accessID=20190425095910554289; ip_loc=21; save_jy_login_name=13516502945; stadate1=204197176; myloc=44%7C4406; myage=21; mysex=m; myuid=204197176; myincome=30; upt=BqRrvC8FKfS00GNogLNErQdgYX2b186sHnhE5GvG-EnxU25Fl8z1EjMcyyRC8WwijmT%2APf5tXj3m1I3K6kIBGZk.; user_attr=000000; PHPSESSID=29793f52f09f44aff6e66ab85c348c63; SESSION_HASH=876c0c8e2a0f78534b4358586872b692351fc81d; jy_refer=sp0.baidu.com; FROM_BD_WD=%25E4%25B8%2596%25E7%25BA%25AA%25E4%25BD%25B3%25E7%25BC%2598; FROM_ST_ID=1764229; FROM_ST=.jiayuan.com; user_access=1; COMMON_HASH=1b86e07a17d23836a9aff7c4e2d76b8d; sl_jumper=%26cou%3D17%26omsg%3D0%26dia%3D0%26lst%3D2019-05-01; last_login_time=1556859653; main_search:205197176=%7C%7C%7C00; pop_avatar=1; PROFILE=205197176%3AaShenone%3Am%3Aimages2.jyimg.com%2Fw4%2Fglobal%2Fi%3A0%3A%3A1%3Azwzp_m.jpg%3A1%3A1%3A50%3A10%3A3.0; RAW_HASH=NAQuNei%2AyFp3Rm6dt9CuDOmEMmAjgUJPdA58pVFwAP7fP1n53GQ0eIBQuYmnU%2AGi5B99pcWSORqHG0CagAIrGZLpAZrLyX8ESg0VMVqHYiOmniQ.; pop_time=1556860049134'
     }
     r = requests.get(uidurl, headers=header).text
     html = etree.HTML(r)
