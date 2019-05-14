@@ -105,10 +105,11 @@ def sql_select(arrayLable):
 def main():
     dataSet, lable = kNN.dataSetAnalyse('../testdata/dataSet.txt')
     stdDataSet, averageVals, ranges = kNN.standardization(dataSet)
-    lng, lat = getlocal.getLocation_json('辽宁')
+    lng, lat = getlocal.getLocation_json('广东')
     nyarry = np.array([0, 160.0, 1.0, 10000.0, lng, lat, 27])
     testArray = (nyarry - averageVals) / ranges
     arrayLable = kNN.kNN(testArray, stdDataSet, lable, 3)
+    print(arrayLable)
     sql_select(arrayLable)
 
 if __name__ == "__main__":

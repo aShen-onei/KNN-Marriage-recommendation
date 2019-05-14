@@ -11,6 +11,10 @@ import random
 # import queue
 # import thread
 
+'''
+百度AK:qGp3Vuokj7oBIbLK3rCd9vZWkx1CHjMT
+'''
+
 def fetchUrl(url, headers):
     try:
         res = requests.get(url, headers=headers)
