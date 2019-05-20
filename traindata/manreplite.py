@@ -70,22 +70,22 @@ def marrige(marrige):
         return m
 
 def edu(education):
-    if(education  == '高中中专及以下'):
+    if('高中中专及以下' in education):
         e = 1
         return e
-    elif(education == '大专'):
+    elif('大专' in education):
         e = 2
         return e
-    elif(education == '本科'):
+    elif('本科' in education):
         e = 3
         return e
-    elif(education == '双学士'):
+    elif('双学士' in education):
         e = 4
         return e
-    elif(education == '硕士'):
+    elif('硕士' in education):
         e = 5
         return e
-    elif(education == '博士'):
+    elif('博士' in education):
         e = 6
         return e
     else:

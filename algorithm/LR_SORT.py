@@ -1,5 +1,10 @@
-from sklearn.linear_model import logistic
+import KNN as kNN
 import numpy as np
+import sys
+import pymysql
+import re
+import requests
+import json
 import random
 
 def sigmoid(inX):
@@ -19,8 +24,12 @@ def randomAscent(dataMatrix, classLable, numIter=150):
             del(dataIndex[randIndex])
     return weights
 
+def classfy(inX, weights):
+    pro = sigmoid(sum(inX*weights))
+    print(pro)
+
 def colictest():
-    frTrain = open('horseColicTraining.txt')
+    frTrain = open('../train/logisticTrain.txt')
     trainingSet = []
     trainingLable = []
     for line in frTrain.readlines():
@@ -31,26 +40,16 @@ def colictest():
         trainingSet.append(lineArr)
         trainingLable.append(float(currline[-1]))
     trainweights = randomAscent(np.array(trainingSet), trainingLable, 500)
-    print(trainweights)
-    errorCount = 0
-    numTestVec = 0.0
-    for line in frTrain.readlines():
-        numTestVec += 1.0
-        currline = line.strip().split('\t')
-        lineArr = []
-        for i in range(len(currline)-1):
-            lineArr.append(float(currline[i]))
-        if int(classfy(np.array(lineArr), trainweights)) != int(currline[-1]):
-            errorCount+=1
-    errorRate = (float(errorCount)/numTestVec) * 100
-    print(errorRate)
+    return trainweights
+def test(weights):
+    fr = open('../train/logisticTrain.txt')
+    for line in fr.readlines():
+        currline2 = line.strip().split('\t')
+        lineArr2 = []
+        for i in range(len(currline2) - 1):
+            lineArr2.append(float(currline2[i]))
+        classfy(np.array(lineArr2), weights)
 
-def classfy(inX, weights):
-    pro = sigmoid(sum(inX*weights))
-    if pro>0.5:
-        return 1.0
-    else:
-        return 0.0
-
-if __name__ == '__main__':
-    colictest()
+if __name__ == "__main__":
+    weights = colictest()
+    test(weights)

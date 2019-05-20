@@ -71,6 +71,8 @@ def plotFit(dataArr, lableMat, weights):
 
 
 if __name__ == '__main__':
-    dataMat, lableMat = loadfile('testSet.txt')
+    dataMat, lableMat = loadfile('AlloneTest.txt')
     weights = gradAscent(dataMat, lableMat)
-    plotFit(dataMat, lableMat, weights)
+    print(weights)
+
+    # plotFit(dataMat, lableMat, weights)

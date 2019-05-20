@@ -25,6 +25,6 @@ def get_result(sql, filename):
     return results
 
 if __name__ == '__main__':
-    sql = "select * from mfinfo"
+    sql = "select distinct * from mfinfo"
     res = get_result(sql, 'dataSet.txt')
 
