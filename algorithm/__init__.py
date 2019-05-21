@@ -1,7 +1,8 @@
 import KNN as kNN
+import LR_SORT as lr
 import numpy as np
 import sys
 sys.path.append('../traindata/')
 import manreplite as getlocal
 if __name__ == "__main__":
-    sort_kNN.main()
+    print('1')

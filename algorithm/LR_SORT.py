@@ -6,11 +6,12 @@ import re
 import requests
 import json
 import random
+from sklearn.linear_model import LogisticRegression
 
 def sigmoid(inX):
-    return 1.0/(1+np.exp(-inX))
+    return 1.0 / (1 + np.exp(-inX))
 
-def randomAscent(dataMatrix, classLable, numIter=150):
+def randomAscent(dataMatrix, classLable, numIter):
     m, n = np.shape(dataMatrix)
     weights = np.ones(n)
     for j in range(numIter):
@@ -39,17 +40,51 @@ def colictest():
             lineArr.append(float(currline[i]))
         trainingSet.append(lineArr)
         trainingLable.append(float(currline[-1]))
-    trainweights = randomAscent(np.array(trainingSet), trainingLable, 500)
+    trainweights = randomAscent(np.array(trainingSet), trainingLable, 3500)
     return trainweights
 def test(weights):
-    fr = open('../train/logisticTrain.txt')
+    fr = open('../testdata/logisticTest.txt')
+    res = []
     for line in fr.readlines():
         currline2 = line.strip().split('\t')
         lineArr2 = []
         for i in range(len(currline2) - 1):
             lineArr2.append(float(currline2[i]))
-        classfy(np.array(lineArr2), weights)
+        res.append(classfy(np.array(lineArr2), weights))
+
+    sort_proIndex = res.argsort()
+    for i in range(len(sort_proIndex)):
+        if res[sort_proIndex[i]] < 0.5:
+            del sort_proIndex[i]
+    return sort_proIndex
+'''
+利用skLearn算法工具中的逻辑回归预测
+但是不能计算出值。。。。。很残念
+# 逻辑回归预测
+def colicSklearn():
+    frTrain = open('../train/logisticTrain.txt')
+    trainingSet = []
+    trainingLable = []
+    for line in frTrain.readlines():
+        currline = line.strip().split('\t')
+        lineArr = []
+        for i in range(len(currline) - 1):
+            lineArr.append(float(currline[i]))
+        trainingSet.append(lineArr)
+        trainingLable.append(float(currline[-1]))
+    classifier = LogisticRegression(solver='sag', max_iter=500).fit(trainingSet, trainingLable)
+    pro = classifier.predict_log_proba(trainingSet)
+    pro2 = classifier.get_params()
+    print(pro)
+    print(pro2)
+'''
+def main():
+    weights = colictest()
+    print(weights)
+    index = test(weights)
+    return index
 
 if __name__ == "__main__":
     weights = colictest()
+    print(weights)
     test(weights)
