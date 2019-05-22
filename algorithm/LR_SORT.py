@@ -27,7 +27,7 @@ def randomAscent(dataMatrix, classLable, numIter):
 
 def classfy(inX, weights):
     pro = sigmoid(sum(inX*weights))
-    print(pro)
+    return pro
 
 def colictest():
     frTrain = open('../train/logisticTrain.txt')
@@ -51,7 +51,7 @@ def test(weights):
         for i in range(len(currline2) - 1):
             lineArr2.append(float(currline2[i]))
         res.append(classfy(np.array(lineArr2), weights))
-
+    res = np.array(res)
     sort_proIndex = res.argsort()
     for i in range(len(sort_proIndex)):
         if res[sort_proIndex[i]] < 0.5:
@@ -80,11 +80,5 @@ def colicSklearn():
 '''
 def main():
     weights = colictest()
-    print(weights)
     index = test(weights)
     return index
-
-if __name__ == "__main__":
-    weights = colictest()
-    print(weights)
-    test(weights)

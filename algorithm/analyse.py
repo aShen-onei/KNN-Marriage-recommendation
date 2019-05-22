@@ -264,25 +264,129 @@ def wrTestText(result, array):
         data = analyse(res[9], array)
         fr.write(str(data[0])+'\t'+str(data[1])+'\t'+str(data[2])+'\t'+str(data[3])+'\t'+str(data[4])+'\t'+str(data[5])+'\t'+str(data[6])+'\n')
 def analyse_result(res):
-    age = 0
-    height = 0
-    edu = 0
-    for item in res:
-        if item.isdigit():
+    age = res[3]
+    height = res[5]
+    edu = getlocal.edu(res[4])
+    marriage = getlocal.marrige(res[7])
+    lng, lat = getlnglat(res[6])
+    array = [age, height, edu, marriage, lng, lat]
+    return array
 
-def rightpercent(result, std)
+def fit(std, array):
+    std_age = 1
+    std_height = 1
+    std_edu = 1
+    std_marriage = 1
+    std_area = 1
+    std_result = std.split(',')
+    for item in std_result:
+        if '岁' in item:
+            res = re.findall(r"\d+\.?\d*", item)
+            if '不限' in item:
+                if res[0].isdigit():
+                    if array[0] > int(res[0]):
+                        std_age = 1
+                    else:
+                        std_age = 0
+                else:
+                    if array[0] < int(res[0]):
+                        std_age = 1
+                    else:
+                        std_age = 0
+            else:
+                if array[0] > int(res[0]) and array[0] < int(res[1]):
+                    std_age = 1
+                else:
+                    std_age = 0
+        elif 'cm' in item:
+            res = re.findall(r"\d+\.?\d*", item)
+            if '不限' in item:
+                if res[0].isdigit():
+                    if array[1] > int(res[0]):
+                        std_height = 1
+                    else:
+                        std_height = 0
+                else:
+                    if array[1] < int(res[0]):
+                        std_height = 1
+                    else:
+                        std_height = 0
+            else:
+                if array[1] > int(res[0]) and array[1] < int(res[0]):
+                    std_height = 1
+                else:
+                    std_height = 0
+        elif '有照片' == item:
+            continue
+        elif '高中中专及以下' in item or '大专' in item or '本科' in item or '双学士' in item or '硕士' in item or '博士' in item:
+            edu = getlocal.edu(item)
+            if array[2] > edu:
+                std_edu = 1
+            else:
+                std_edu = 0
+        elif '未婚' in item or '离异' in item or '丧偶' in item:
+            ma = getlocal.marrige(item)
+            if array[0] == ma:
+                std_marriage = 1
+            else:
+                std_marriage = 0
+        elif item == '':
+            continue
+        elif '族' in item:
+            continue
+        else:
+            try:
+                print(item)
+                lng, lat = getlnglat(item)
+                if abs(lng - array[4]) < 14 and abs(lat - array[5]) < 10:
+                    std_area = 1
+                else:
+                    std_area = 0
+            except Exception as e:
+                lng = lat = 0
+                std_area = 0
+                print(e)
+
+    std_point = (std_area + std_marriage + std_edu + std_height + std_age) / 5
+    if std_point > 0.5:
+        return 1
+    else:
+        return 0
+def rightpercent(result, std):
     fr = open('recommend.txt', 'w', encoding='utf-8')
     sum = len(result)
+    curr = 0
     for res in result:
-        fr.write(res)
+        fr.write(str(res))
         array = analyse_result(res)
+        curr+=fit(std, array)
+    Accuracy_Rate = curr/sum
+    return Accuracy_Rate
+'''
+def main(array, std_girl):
+    dataSet, lable = kNN.dataSetAnalyse('../testdata/dataSetTest.txt')
+    std_dataset, min_values, range_values = kNN.autNorm_mat(dataSet)
+    nyarry = np.array(array)
+    testArray = (nyarry - min_values) / range_values
+    arrayLable = kNN.kNN(testArray, std_dataset, lable, 3)
+    result = sql_select(arrayLable)
+    all_result = sql_slectAll()
+    wrTrainText(all_result, array)
+    wrTestText(result, array)
+    index = lr.main()
+    new_order = []
+    for i in range(0, index.__len__())[::-1]:
+        new_order.append(result[index[i]])
+    Rate = rightpercent(new_order, std_girl)
+    return Rate
+'''
 if __name__ == "__main__":
     # main()
     dataSet, lable = kNN.dataSetAnalyse('../testdata/dataSetTest.txt')
     std_dataset, min_values, range_values = kNN.autNorm_mat(dataSet)
-    lng, lat = getlocal.getLocation_json('贵阳')
-    array = [1, 170.0, 3.0, 3500.0, lng, lat, 23]
-    std_girl = ['18-22岁,155-170cm,贵阳']
+    lng, lat = getlocal.getLocation_json('广东')
+    array = [1, 170.0, 3.0, 22500.0, lng, lat, 27]
+    std_girl = '20-26岁,155-170cm,广州'
     nyarry = np.array(array)
     testArray = (nyarry - min_values) / range_values
     arrayLable = kNN.kNN(testArray, std_dataset, lable, 3)
@@ -296,4 +400,5 @@ if __name__ == "__main__":
     new_order = []
     for i in range(0, index.__len__())[::-1]:
         new_order.append(result[index[i]])
-
+    Rate = rightpercent(new_order, std_girl)
+    print(Rate)
