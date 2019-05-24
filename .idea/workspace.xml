@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="824930d6-5799-40a1-b84d-06156a2eef54" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithm/LR_SORT.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithm/LR_SORT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithm/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithm/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithm/analyse.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithm/analyse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata/logisticTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/testdata/logisticTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train/logisticTrain.txt" beforeDir="false" afterPath="$PROJECT_DIR$/train/logisticTrain.txt" afterDir="false" />
-    </list>
+    <list default="true" id="824930d6-5799-40a1-b84d-06156a2eef54" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/algorithm/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+            <state relative-caret-position="132">
+              <caret line="4" column="29" lean-forward="true" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -91,7 +84,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="435" />
     <option name="y" value="88" />
     <option name="width" value="1400" />
@@ -329,12 +322,12 @@
       <workItem from="1558402161937" duration="867000" />
       <workItem from="1558415153407" duration="14547000" />
       <workItem from="1558491834183" duration="475000" />
-      <workItem from="1558504877169" duration="4235000" />
+      <workItem from="1558504877169" duration="4913000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246493000" />
+    <option name="totallyTimeSpent" value="247171000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -347,14 +340,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1872" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5754858" visible="true" weight="0.13410597" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.4245142" side_tool="true" weight="0.294702" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3045738" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3045738" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -572,8 +564,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/algorithm/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+        <state relative-caret-position="132">
+          <caret line="4" column="29" lean-forward="true" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
