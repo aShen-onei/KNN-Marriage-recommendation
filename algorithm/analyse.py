@@ -268,7 +268,12 @@ def analyse_result(res):
     height = res[5]
     edu = getlocal.edu(res[4])
     marriage = getlocal.marrige(res[7])
-    lng, lat = getlnglat(res[6])
+    print(res[6])
+    try:
+        lng, lat = getlnglat(res[6])
+    except Exception as e:
+        lng = lat = 0
+        print(e)
     array = [age, height, edu, marriage, lng, lat]
     return array
 
@@ -357,7 +362,7 @@ def rightpercent(result, std):
     sum = len(result)
     curr = 0
     for res in result:
-        fr.write(str(res))
+        fr.write(str(res)+'\n')
         array = analyse_result(res)
         curr+=fit(std, array)
     Accuracy_Rate = curr/sum
@@ -384,15 +389,15 @@ if __name__ == "__main__":
     # main()
     dataSet, lable = kNN.dataSetAnalyse('../testdata/dataSetTest.txt')
     std_dataset, min_values, range_values = kNN.autNorm_mat(dataSet)
-    lng, lat = getlocal.getLocation_json('广东')
-    array = [1, 170.0, 3.0, 22500.0, lng, lat, 27]
-    std_girl = '20-26岁,155-170cm,广州'
+    lng, lat = getlocal.getLocation_json('汕头')
+    array = [1, 170.0, 3.0, 15000.0, lng, lat, 25]
+    std_girl = '22-25岁,163-170cm,南京'
     nyarry = np.array(array)
     testArray = (nyarry - min_values) / range_values
     arrayLable = kNN.kNN(testArray, std_dataset, lable, 3)
     print(arrayLable)
     result = sql_select(arrayLable)
-    print(result)
+    print(len(result))
     all_result = sql_slectAll()
     wrTrainText(all_result, array)
     wrTestText(result, array)

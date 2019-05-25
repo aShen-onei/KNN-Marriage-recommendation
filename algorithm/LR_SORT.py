@@ -53,10 +53,15 @@ def test(weights):
         res.append(classfy(np.array(lineArr2), weights))
     res = np.array(res)
     sort_proIndex = res.argsort()
+    print(len(sort_proIndex))
+    index_array = []
     for i in range(len(sort_proIndex)):
         if res[sort_proIndex[i]] < 0.5:
-            del sort_proIndex[i]
-    return sort_proIndex
+            continue
+        else:
+            index_array.append(sort_proIndex[i])
+    print(len(index_array))
+    return index_array
 '''
 利用skLearn算法工具中的逻辑回归预测
 但是不能计算出值。。。。。很残念
