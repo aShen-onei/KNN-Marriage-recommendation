@@ -85,5 +85,6 @@ def colicSklearn():
 '''
 def main():
     weights = colictest()
+    print(weights)
     index = test(weights)
     return index

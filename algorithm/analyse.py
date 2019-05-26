@@ -389,9 +389,9 @@ if __name__ == "__main__":
     # main()
     dataSet, lable = kNN.dataSetAnalyse('../testdata/dataSetTest.txt')
     std_dataset, min_values, range_values = kNN.autNorm_mat(dataSet)
-    lng, lat = getlocal.getLocation_json('汕头')
+    lng, lat = getlocal.getLocation_json('安徽')
     array = [1, 170.0, 3.0, 15000.0, lng, lat, 25]
-    std_girl = '22-25岁,163-170cm,南京'
+    std_girl = '22-25岁,163-170cm,安徽'
     nyarry = np.array(array)
     testArray = (nyarry - min_values) / range_values
     arrayLable = kNN.kNN(testArray, std_dataset, lable, 3)
